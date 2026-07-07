@@ -1,0 +1,162 @@
+// -----------------------------------------------------------------------------
+// BBZ theme – extra SCSS
+//
+// Injected AFTER the Boost/Bootstrap preset. Small, targeted component tweaks
+// that reproduce the handoff design on top of Boost's real markup. Everything
+// here degrades gracefully: if a selector is missing in a given Moodle version,
+// the rule simply does nothing – no layout is overridden.
+// -----------------------------------------------------------------------------
+
+// --- Global ------------------------------------------------------------------
+body {
+    background-color: $bbz-bg;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    letter-spacing: -.01em;
+}
+
+// --- Navbar ------------------------------------------------------------------
+// Keep the top bar white with a hairline bottom border, as in the design.
+.navbar {
+    background-color: $bbz-surface !important;
+    border-bottom: 1px solid $bbz-border;
+    box-shadow: none;
+
+    .nav-link {
+        border-radius: $border-radius;
+    }
+}
+
+// Active primary-navigation item: blue text on a soft blue tint pill.
+.primary-navigation .navigation .nav-link.active,
+.primary-navigation .navigation .active > .nav-link {
+    color: $bbz-blue;
+    background-color: $bbz-blue-tint;
+    border-radius: $border-radius;
+}
+
+// Round the user-menu avatar background to match.
+.usermenu .avatar,
+.userinitials {
+    background-color: $bbz-blue-tint2 !important;
+    color: $bbz-blue-dark !important;
+}
+
+// --- Buttons -----------------------------------------------------------------
+.btn-primary {
+    background-color: $bbz-blue;
+    border-color: $bbz-blue;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+        background-color: $bbz-blue-dark !important;
+        border-color: $bbz-blue-dark !important;
+    }
+}
+
+.btn-outline-primary {
+    color: $bbz-blue;
+    border-color: $bbz-blue;
+
+    &:hover {
+        background-color: $bbz-blue;
+        border-color: $bbz-blue;
+    }
+}
+
+// --- Cards & course boxes ----------------------------------------------------
+.card {
+    border-color: $bbz-border;
+}
+
+// Subtle hover lift on anything card-like (dashboard, course index, catalogue).
+.dashboard-card,
+.block_myoverview .card,
+.courses .coursebox,
+.course-listitem,
+.coursebox {
+    transition: box-shadow .15s ease, border-color .15s ease;
+
+    &:hover {
+        box-shadow: 0 4px 14px rgba(20, 20, 20, .08);
+        border-color: $bbz-border-strong;
+    }
+}
+
+// --- Progress bars -----------------------------------------------------------
+.progress {
+    background-color: $bbz-surface-alt;
+    border-radius: 999px;
+}
+
+.progress-bar {
+    background-color: $bbz-blue;
+}
+
+// --- Badges / category pills -------------------------------------------------
+.badge {
+    font-weight: 600;
+    letter-spacing: .02em;
+}
+
+.badge.bg-primary,
+.badge.badge-primary {
+    background-color: $bbz-blue !important;
+}
+
+// --- Urgency accent ----------------------------------------------------------
+// Red is reserved for due dates / urgency, as specified in the design.
+.text-danger {
+    color: $bbz-red !important;
+}
+
+.badge.bg-danger,
+.badge.badge-danger {
+    background-color: $bbz-red !important;
+}
+
+// --- Login page --------------------------------------------------------------
+// Thin blue bar across the very top of the viewport.
+body.pagelayout-login {
+    background-color: $bbz-bg;
+
+    &::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: $bbz-blue;
+        z-index: 1080;
+    }
+}
+
+// The login card: rounded, softly shadowed, with a small red corner accent –
+// the only prominent red on the page.
+.pagelayout-login #page-content .card,
+.pagelayout-login .login-container,
+.pagelayout-login .loginform .card {
+    position: relative;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid $bbz-border;
+    border-radius: 14px;
+    box-shadow: 0 8px 30px rgba(20, 20, 20, .06);
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        width: 18px;
+        height: 18px;
+        background: $bbz-red;
+        border-radius: 3px;
+    }
+}
