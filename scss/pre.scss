@@ -1,0 +1,68 @@
+// -----------------------------------------------------------------------------
+// BBZ theme – pre-SCSS
+//
+// Injected BEFORE the Boost/Bootstrap preset. Because Bootstrap declares its
+// variables with `!default`, any plain assignment here wins. This is where the
+// brand is applied – colours, typography, radii – without touching any markup,
+// which keeps the theme update-safe.
+// -----------------------------------------------------------------------------
+
+// Public Sans – chosen for high legibility across very different target groups.
+// Falls back to the system font stack when the site has no internet access.
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap');
+
+// --- Brand tokens (BBZ Rendsburg-Eckernförde) --------------------------------
+// Blau/Rot are used only as accents (buttons, links, progress, urgency),
+// never as large fills.
+$bbz-blue:          #3b6eb9; // Primary accent.
+$bbz-blue-dark:     #1b4684; // Hover / text on tints.
+$bbz-blue-tint:     #e4efff; // Active nav / chip background.
+$bbz-blue-tint2:    #cce0fc; // Avatar background.
+$bbz-red:           #c13c3b; // Rare accent – urgency / due only.
+$bbz-red-tint:      #ffe6e3; // "Next due" card background.
+
+$bbz-bg:            #f7f5f1; // Warm off-white page background.
+$bbz-surface:       #ffffff; // Cards / navbar.
+$bbz-surface-alt:   #fcfaf7; // Chips / bars / hover.
+$bbz-border:        #dedad5; // Default border.
+$bbz-border-strong: #c2bdb7; // Dividers / neutral icons.
+$bbz-text:          #201c18; // Body text / headings.
+$bbz-text-muted:    #625d56; // Secondary text.
+
+// --- Bootstrap / Boost variable overrides ------------------------------------
+$primary:    $bbz-blue;
+$danger:     $bbz-red;
+
+$body-bg:    $bbz-bg;
+$body-color: $bbz-text;
+
+// Typography.
+$font-family-sans-serif: 'Public Sans', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$headings-font-weight: 700;
+
+// Rounded corners: 8px controls, larger cards, pill elements.
+$border-radius:    .5rem;   // 8px – buttons, inputs, nav items.
+$border-radius-sm: .375rem; // 6px.
+$border-radius-lg: .75rem;  // 12px – cards.
+
+$card-border-radius: .75rem;
+$card-border-color:  $bbz-border;
+$card-cap-bg:        $bbz-surface;
+$card-spacer-y:      1rem;
+
+$border-color: $bbz-border;
+
+// Links.
+$link-color:       $bbz-blue;
+$link-hover-color: $bbz-blue-dark;
+
+// Form controls – subtle border, blue focus ring (matches the design's inputs).
+$input-border-color:       $bbz-border;
+$input-focus-border-color: $bbz-blue;
+$input-btn-focus-color:    rgba($bbz-blue, .25);
+$input-border-radius:      .5rem;
+
+// Navbar (Boost's top bar is light).
+$navbar-light-color:        $bbz-text-muted;
+$navbar-light-hover-color:  $bbz-blue;
+$navbar-light-active-color: $bbz-blue;
